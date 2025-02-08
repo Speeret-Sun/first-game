@@ -159,7 +159,15 @@ while running:
                 if el.x < -10:
                     wrag_list.pop(i)
                 if player_rect.colliderect(el):
-                    gameplay = False
+                    live_num -= 1
+                    wrag_list.pop(i)
+                    vzruv = pygame.image.load('image/items/vzruv.png').convert_alpha()
+                    screen.blit(vzruv, (player_x, player_y))
+                    vzr_sound = pygame.mixer.Sound('sounds/vzr.mp3')
+                    vzr_sound.play()
+
+                    if live_num == 0:
+                        gameplay = False
 
         if heel_spis:
             for (i, el) in enumerate(heel_spis):
@@ -260,12 +268,16 @@ while running:
                             screen.blit(vzruv, wrag_el)
                             vzr_sound = pygame.mixer.Sound('sounds/vzr.mp3')
                             vzr_sound.play()
-                            if wrag_num == 10:
-                                new2_lvl = True
+                        elif player_rect.colliderect(wrag_el):
+                            vzruv = pygame.image.load('image/items/vzruv.png').convert_alpha()
+                            screen.blit(vzruv, wrag_el)
+                            vzr_sound = pygame.mixer.Sound('sounds/vzr.mp3')
+                            vzr_sound.play()
+                            live_num -= 1
+                            if live_num == 0:
+                                gameplay = False
 
-                                # if new2_lvl == True:
-                                #     screen.blit(new_lvl, (0, 0))
-                                #     gameplay = False
+
 
 
 
