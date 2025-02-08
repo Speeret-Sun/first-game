@@ -304,6 +304,7 @@ while running:
 
         mouse = pygame.mouse.get_pos()
         if restart_label_rect.collidepoint(mouse) and pygame.mouse.get_pressed()[0]:
+            live_num = 3
             gameplay = True
             player_x = 200
             wrag_list.clear()
